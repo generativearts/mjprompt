@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Midjourney Prompt Generator</title>
+	<!-- Підключення Bootstrap -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+	<div class="container">
+		<h1>Midjourney Prompt Generator</h1>
+		<form>
+			<div class="form-group">
+				<label for="prompt">Enter a basic prompt:</label>
+				<input type="text" class="form-control" id="prompt">
+			</div>
+			<button type="button" class="btn btn-primary" id="add-param">Add Parameter</button>
+			<button type="button" class="btn btn-danger" id="remove-param">Remove Parameter</button>
+		</form>
+	</div>
+	
+	<!-- Підключення jQuery -->
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+	<!-- Підключення скрипту для додавання та видалення параметрів -->
+	<script>
+		$(document).ready(function() {
+			$("#add-param").click(function() {
+    var versionOptions = ["v1", "v2", "v3"]; // список опцій для вибору версії Midjourney
+    var select = $("<select></select>").attr("name", "version");
+    // створення елемента select з опціями
+    $.each(versionOptions, function(index, value) {
+        $("<option></option>")
+            .attr("value", value)
+            .text(value)
+            .appendTo(select);
+    });
+    // створення елемента div з select та кнопкою видалення
+    var paramDiv = $("<div></div>").addClass("form-group param");
+    paramDiv.append(select);
+    paramDiv.append($("<button></button>")
+        .addClass("btn btn-danger remove-param")
+        .text("Remove")
+        .click(function() {
+            $(this).parent().remove();
+        })
+    );
+    // додавання елемента div до форми
+    $("form").append(paramDiv);
+});
+			$("#remove-param").click(function() {
+				// код для видалення параметру
+			});
+		});
+	</script>
+</body>
+</html>
