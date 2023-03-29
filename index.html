@@ -1,55 +1,58 @@
 <!DOCTYPE html>
-<html>
-<head> 
-	<title>Midjourney Prompt Generator</title>
-	<!-- Підключення Bootstrap -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-</head>
-<body>
-	<div class="container">
-		<h1>Midjourney Prompt Generator</h1>
-		<form>
-			<div class="form-group">
-				<label for="prompt">Enter a basic prompt:</label>
-				<input type="text" class="form-control" id="prompt">
-			</div>
-			<button type="button" class="btn btn-primary" id="add-param">Add Parameter</button>
-			<button type="button" class="btn btn-danger" id="remove-param">Remove Parameter</button>
-		</form>
-	</div>
-	
-	<!-- Підключення jQuery -->
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-	<!-- Підключення скрипту для додавання та видалення параметрів -->
-	<script>
-		$(document).ready(function() {
-			$("#add-param").click(function() {
-    var versionOptions = ["v1", "v2", "v3"]; // список опцій для вибору версії Midjourney
-    var select = $("<select></select>").attr("name", "version");
-    // створення елемента select з опціями
-    $.each(versionOptions, function(index, value) {
-        $("<option></option>")
-            .attr("value", value)
-            .text(value)
-            .appendTo(select);
-    });
-    // створення елемента div з select та кнопкою видалення
-    var paramDiv = $("<div></div>").addClass("form-group param");
-    paramDiv.append(select);
-    paramDiv.append($("<button></button>")
-        .addClass("btn btn-danger remove-param")
-        .text("Remove")
-        .click(function() {
-            $(this).parent().remove();
-        })
-    );
-    // додавання елемента div до форми
-    $("form").append(paramDiv);
-});
-			$("#remove-param").click(function() {
-				// код для видалення параметру
-			});
-		});
-	</script>
-</body>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prompt Creator</title>
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/css/bootstrap.min.css"
+      integrity="sha512-+VbqHaZtTKriP7dMzTSta1akrTzW8rG2sLsZXsEmvZLOIOIqw8QLcI85/AWHuPzZOwwQ7fXyWgDeI7KjA3Ynqw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="text-center">Prompt Creator</h1>
+      <form>
+        <div class="mb-3">
+          <label for="promptInput" class="form-label">Base Prompt</label>
+          <textarea
+            class="form-control"
+            id="promptInput"
+            rows="3"
+            placeholder="Enter your base prompt here..."
+          ></textarea>
+        </div>
+        <div class="mb-3">
+          <label for="exclusionsInput" class="form-label">Exclusions</label>
+          <textarea
+            class="form-control"
+            id="exclusionsInput"
+            rows="3"
+            placeholder="Enter any exclusion words here, separated by commas..."
+          ></textarea>
+        </div>
+        <div class="mb-3">
+          <label for="resultOutput" class="form-label">Result</label>
+          <textarea class="form-control" id="resultOutput" rows="3"></textarea>
+        </div>
+        <div class="text-center">
+          <button type="button" class="btn btn-primary">Add Parameter</button>
+          <button type="button" class="btn btn-danger">Remove Parameter</button>
+        </div>
+      </form>
+    </div>
+    <!-- Bootstrap JS -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/js/bootstrap.bundle.min.js"
+      integrity="sha512-akgZvBr15C16wYH0BkC7lj9yvF0hTQZudFsq0bdDQZeiQiNRrD7Oc60LuYKwp7V/LAkmEnkM7db5B5U6ivbU6w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+  </body>
 </html>
